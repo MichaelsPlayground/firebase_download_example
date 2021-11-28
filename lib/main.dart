@@ -81,7 +81,8 @@ class _MainPageState extends State<MainPage> {
       );
 
   Widget buildFile(BuildContext context, FirebaseFile file) => ListTile(
-        leading: ClipOval(
+      /* if the files are not images comment out the following lines
+    leading: ClipOval(
           child: Image.network(
             file.url,
             width: 52,
@@ -89,6 +90,7 @@ class _MainPageState extends State<MainPage> {
             fit: BoxFit.cover,
           ),
         ),
+     */
         title: Text(
           file.name,
           style: TextStyle(

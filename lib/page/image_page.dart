@@ -34,10 +34,13 @@ class ImagePage extends StatelessWidget {
         ],
       ),
       body: isImage
-          ? Image.network(
-              file.url,
-              height: double.infinity,
-              fit: BoxFit.cover,
+          ? Center(
+              child: Image.network(
+                file.url,
+                height: double.infinity,
+                //fit: BoxFit.cover,
+                fit: BoxFit.contain, // show large fotos complete
+              ),
             )
           : Center(
               child: Text(
