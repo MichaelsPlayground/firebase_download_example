@@ -1,6 +1,10 @@
 # Flutter Tutorial - Download Files From Firebase Storage
 
 ```plaintext
+Source code minimaly changed: if the uploaded files is not an image: don't try to show
+```
+
+```plaintext
 video: https://www.youtube.com/watch?v=YA_fHCF_EYc
 source code: https://github.com/JohannesMilke/firebase_download_example
 

@@ -80,8 +80,61 @@ class _MainPageState extends State<MainPage> {
         ),
       );
 
-  Widget buildFile(BuildContext context, FirebaseFile file) => ListTile(
-      /* if the files are not images comment out the following lines
+  Widget buildFile(BuildContext context, FirebaseFile file) {
+    final isImage = ['.jpeg', '.jpg', '.png'].any(file.name.contains);
+
+    if (isImage) { // image file
+    return ListTile(
+        /* if the files are not images comment out the following lines to prevent errors */
+        leading: ClipOval(
+          child: Image.network(
+            file.url,
+            width: 52,
+            height: 52,
+            fit: BoxFit.cover,
+          ),
+        ),
+        /**/
+        title: Text(
+          file.name,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            decoration: TextDecoration.underline,
+            color: Colors.blue,
+          ),
+        ),
+        onTap: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => ImagePage(file: file),
+            ))); }
+    else { // not an image file
+      return ListTile(
+        /* if the files are not images comment out the following lines to prevent errors */
+          /*
+          leading: ClipOval(
+            child: Image.network(
+              file.url,
+              width: 52,
+              height: 52,
+              fit: BoxFit.cover,
+            ),
+          ),*/
+          /**/
+          title: Text(
+            file.name,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              decoration: TextDecoration.underline,
+              color: Colors.blue,
+            ),
+          ),
+          onTap: () => Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => ImagePage(file: file),
+          )));
+    }
+  }
+
+  Widget buildFileOrg(BuildContext context, FirebaseFile file) => ListTile(
+        /* if the files are not images comment out the following lines to prevent errors
     leading: ClipOval(
           child: Image.network(
             file.url,
