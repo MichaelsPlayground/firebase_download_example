@@ -8,7 +8,7 @@
 PRODUCT_NAME = firebase_download_example
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.example.firebaseDownloadExample
+PRODUCT_BUNDLE_IDENTIFIER = com.example.firebaseChatExample;
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2021 com.example. All rights reserved.

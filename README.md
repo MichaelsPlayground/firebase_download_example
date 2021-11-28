@@ -1,4 +1,97 @@
 # Flutter Tutorial - Download Files From Firebase Storage
+
+```plaintext
+video: https://www.youtube.com/watch?v=YA_fHCF_EYc
+source code: https://github.com/JohannesMilke/firebase_download_example
+
+funktioniert unter iOS und Android
+```
+
+```plaintext
+Firebase console: https://console.firebase.google.com/
+Name: FirebaseChatExample
+
+Android:
+
+build.gradle:
+    dependencies {
+        classpath 'com.google.gms:google-services:4.3.5'
+
+manuell den Namen in AndroidManifest.xml geändert:
+debug, main und profile
+
+IOS:
+in Podfile:
+platform :ios, '10.0'
+
+original AppleBundleIdentifier: com.example.firebaseDownloadExample
+usage of rename to change rename the module
+AppleBundleIdentifier: com.example.firebaseChatExample
+created CloudFirestore database
+Authentication with Email + Passwort activated
+```
+
+```plaintext
+in Firebase Console / Storage / Rules
+
+Original rule (allows only if authenticated before):
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
+
+This rule means: everyone can up- and download without any authentication
+### do not use this in production ###
+
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      allow read, write: if true;
+    }
+  }
+}
+
+This is for public storage
+### do not use this in production ###
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      allow read, write;
+    }
+  }
+}
+```
+
+```plaintext
+result of upload:
+
+Storage-Speicherort
+gs://fir-chatexample-95ac6.appspot.com/files/gps.jpg
+
+Zugriffstoken
+9d8832ba-7a3d-4999-b9e8-b0e25b15b311
+```
+
+
+Use rename to change Apple BundleId and Android Package name
+```plaintext
+/Users/michaelfehr/flutter/bin/flutter
+/Users/michaelfehr/flutter/bin/ pub global activate rename
+
+/Users/michaelfehr/flutter/bin/flutter pub global activate rename
+/Users/michaelfehr/flutter/bin/flutter pub global run rename --bundleId com.example.firebaseChatExample
+/Users/michaelfehr/flutter/bin/flutter pub global run rename --bundleId com.example.firebaseChatExample
+```
+
+
+
+
 [![Youtube](https://img.shields.io/static/v1?label=JohannesMilke&message=Subscribe&logo=YouTube&color=FF0000&style=for-the-badge)][youtube]
 [![Twitter Follow](https://img.shields.io/twitter/follow/JohannesMilke?color=1DA1F2&label=Followers&logo=twitter&style=for-the-badge)][twitter]
 [![Newsletter](https://img.shields.io/static/v1?label=Follow&message=My%20Flutter%20Newsletter&color=5FB709&style=for-the-badge)][newsletter]
