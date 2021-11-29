@@ -30,7 +30,7 @@ class FirebaseApi {
   static Future downloadFile(Reference ref) async {
     final dir = await getApplicationDocumentsDirectory();
     final file = File('${dir.path}/${ref.name}');
-
+    //print(ref.getMetadata().asStream().length.toString());
     await ref.writeToFile(file);
   }
 }
